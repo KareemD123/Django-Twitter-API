@@ -9,6 +9,10 @@ class Tweet(models.Model):
     def __str__(self):
         return f"{self.name}'s tweet says: {self.description}"
 
+class Comment(models.Model):
+    tweet = models.ForeignKey(Tweet, related_name='comments', on_delete=models.CASCADE)
+    author = models.CharField(max_length=50, default='')
+    comment = models.TextField(max_length=500, default='')
 
 
 
